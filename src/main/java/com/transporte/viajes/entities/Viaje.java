@@ -1,0 +1,43 @@
+package com.transporte.viajes.entities;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+@Entity
+@Table(name = "viajes")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class Viaje {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @NotNull
+    private Integer origenId;
+    @NotNull
+    private Integer destinoId;
+    @NotNull
+    private Integer lugares;
+    private Timestamp creado;
+    private Timestamp modificado;
+    @NotNull
+    private Integer estatus;
+    @NotNull
+    private Integer usuarioId;
+    @NotNull
+    private Integer clienteId;
+    @NotNull
+    private Integer conductorId;
+    @OneToOne(mappedBy = "viaje", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Pago pago;
+    @OneToMany(mappedBy = "viaje", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Boleto> boletos;
+}
