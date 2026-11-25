@@ -108,7 +108,7 @@
 		<dependency> <!-- para los retrys -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
-			<version>3.3.4</version>
+			<version>4.0.0-M2</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
